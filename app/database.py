@@ -19,6 +19,7 @@ def init_db():
             company_name VARCHAR(255) NOT NULL
         )
     """
+    
     )
     db.commit()
     cursor.close()

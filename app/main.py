@@ -27,7 +27,7 @@ def get_stocks():
     cursor = db.cursor(dictionary=True)
 
     # TODO: fill this out
-    query = ""
+    query = "SELECT * FROM stock"
 
     cursor.execute(query)
     stocks = cursor.fetchall()
@@ -42,7 +42,10 @@ def create_stock(stock: StockCreate):
     cursor = db.cursor()
 
     # TODO: fill this out
-    query = f""""""
+    query = f"""
+    INSERT INTO stock (symbol, price, company_name) 
+    VALUES('{stock.symbol}', '{stock.price}', '{stock.company_name}');
+    """
 
     cursor.execute(query)
     db.commit()
@@ -62,7 +65,7 @@ def get_stock(stock_id: int):
     cursor = db.cursor(dictionary=True)
 
     # TODO: fill this out
-    query = ""
+    query = f"SELECT * FROM stock WHERE id = {stock_id}"
 
     cursor.execute(query)
     stock = cursor.fetchone()
@@ -80,8 +83,8 @@ def delete_stock(stock_id: int):
     cursor = db.cursor()
 
     # Check if stock exists
-    # TODO: fille this out
-    query = f""
+    # TODO: fill this out
+    query = f"SELECT * FROM stock WHERE id = {stock_id}"
 
     cursor.execute(query)
     if cursor.fetchone() is None:
@@ -91,7 +94,7 @@ def delete_stock(stock_id: int):
 
     # delete the stock
     # TODO: fill this out
-    query = f""
+    query = f"DELETE FROM stock WHERE id = {stock_id}"
 
     cursor.execute(query)
     db.commit()
